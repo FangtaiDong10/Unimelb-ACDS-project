@@ -1,6 +1,6 @@
 # Project VIOLET
 
-The project now has been deployed, and avaialble on https://kv-redback.tk
+The project now has been deployed, and avaialble on https://kv-redback.tk (Server Expired on Jan. 2023)
 
 ## Backgroud
 This project is in collaboration with the Australian Clinical Dosimetry Service (ACDS), an organisation responsible for checking, testing, and verifying
