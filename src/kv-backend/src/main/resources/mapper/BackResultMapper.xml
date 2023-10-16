@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.BackResultMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.BackResult" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="back_result_id" property="backResultId" jdbcType="VARCHAR" />
+    <result column="input_id" property="inputId" jdbcType="VARCHAR" />
+    <result column="chamber_SN" property="chamberSn" jdbcType="VARCHAR" />
+    <result column="nk" property="nk" jdbcType="DOUBLE" />
+    <result column="bw_combined" property="bwCombined" jdbcType="DOUBLE" />
+    <result column="bw_al" property="bwAl" jdbcType="DOUBLE" />
+    <result column="bw_cu" property="bwCu" jdbcType="DOUBLE" />
+    <result column="murho" property="murho" jdbcType="DOUBLE" />
+    <result column="k_closed_cone" property="kClosedCone" jdbcType="DOUBLE" />
+    <result column="pstem" property="pstem" jdbcType="DOUBLE" />
+    <result column="warning" property="warning" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>

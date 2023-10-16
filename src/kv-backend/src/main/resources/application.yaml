@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: kv-backend
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: Australia/Melbourne
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-swallow-size: -1
+mybatis:
+  type-aliases-package: kv.pojo
+  mapper-locations: classpath:mapper/*.xml
+mapper:
+  mappers: kv.common.MyMapper
+  not-empty: true
+  identity: sqlserver

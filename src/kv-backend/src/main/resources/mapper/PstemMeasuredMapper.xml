@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.PstemMeasuredMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.PstemMeasured" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="beam_pp_chamber_id" property="beamPpChamberId" jdbcType="VARCHAR" />
+    <result column="pstem_option" property="pstemOption" jdbcType="VARCHAR" />
+    <result column="diameter" property="diameter" jdbcType="DOUBLE" />
+    <result column="hvl_measured_mm_al" property="hvlMeasuredMmAl" jdbcType="DOUBLE" />
+    <result column="pstem_value" property="pstemValue" jdbcType="DOUBLE" />
+    <result column="date_updated" property="dateUpdated" jdbcType="DATE" />
+  </resultMap>
+</mapper>

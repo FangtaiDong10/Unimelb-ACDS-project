@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.MurhoCuMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.MurhoCu" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="murho_cu_id" property="murhoCuId" jdbcType="INTEGER" />
+    <result column="hvl_cu" property="hvlCu" jdbcType="DOUBLE" />
+    <result column="murho" property="murho" jdbcType="DOUBLE" />
+    <result column="date_updated" property="dateUpdated" jdbcType="DATE" />
+  </resultMap>
+</mapper>

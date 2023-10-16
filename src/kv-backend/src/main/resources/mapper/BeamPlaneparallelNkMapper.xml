@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.BeamPlaneparallelNkMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.BeamPlaneparallelNk" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="beam_pp_chamber_id" property="beamPpChamberId" jdbcType="VARCHAR" />
+    <result column="nk_value" property="nkValue" jdbcType="DOUBLE" />
+    <result column="date_updated" property="dateUpdated" jdbcType="DATE" />
+  </resultMap>
+</mapper>

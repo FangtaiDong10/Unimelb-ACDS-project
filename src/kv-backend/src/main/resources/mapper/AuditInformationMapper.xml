@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.AuditInformationMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.AuditInformation" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="audit_id" property="auditId" jdbcType="VARCHAR" />
+    <result column="facility_id" property="facilityId" jdbcType="VARCHAR" />
+    <result column="machine_id" property="machineId" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="DATE" />
+  </resultMap>
+</mapper>

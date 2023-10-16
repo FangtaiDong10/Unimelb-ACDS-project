@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.FacilityInformationMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.FacilityInformation" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="facility_id" property="facilityId" jdbcType="VARCHAR" />
+    <result column="organisation_name" property="organisationName" jdbcType="VARCHAR" />
+    <result column="oncology_service" property="oncologyService" jdbcType="VARCHAR" />
+    <result column="oncology_facility" property="oncologyFacility" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

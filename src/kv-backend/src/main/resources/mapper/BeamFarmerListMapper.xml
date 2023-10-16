@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.BeamFarmerListMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.BeamFarmerList" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="beam_farmer_id" property="beamFarmerId" jdbcType="VARCHAR" />
+    <result column="kV" property="kv" jdbcType="DOUBLE" />
+    <result column="hvl_measured_mm_cu" property="hvlMeasuredMmCu" jdbcType="DOUBLE" />
+    <result column="hvl_measured_mm_al" property="hvlMeasuredMmAl" jdbcType="DOUBLE" />
+  </resultMap>
+</mapper>

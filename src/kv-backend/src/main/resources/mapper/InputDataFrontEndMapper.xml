@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.InputDataFrontEndMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.InputDataFrontEnd" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="audit_id" property="auditId" jdbcType="VARCHAR" />
+    <result column="table1" property="table1" jdbcType="LONGVARCHAR" />
+    <result column="table2" property="table2" jdbcType="LONGVARCHAR" />
+    <result column="KS_table_json" property="ksTableJson" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>

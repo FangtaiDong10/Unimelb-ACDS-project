@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.BeamDataMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.BeamData" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="beam_id" property="beamId" jdbcType="VARCHAR" />
+    <result column="reference_cone_id" property="referenceConeId" jdbcType="VARCHAR" />
+    <result column="beam_id_alt" property="beamIdAlt" jdbcType="VARCHAR" />
+    <result column="nom_energy" property="nomEnergy" jdbcType="DOUBLE" />
+    <result column="scd" property="scd" jdbcType="VARCHAR" />
+    <result column="field_size_at_scd" property="fieldSizeAtScd" jdbcType="VARCHAR" />
+    <result column="hvl_nominal_mm_al" property="hvlNominalMmAl" jdbcType="DOUBLE" />
+    <result column="hvl_nominal_mm_cu" property="hvlNominalMmCu" jdbcType="DOUBLE" />
+    <result column="hvl_measured_mm_al" property="hvlMeasuredMmAl" jdbcType="DOUBLE" />
+    <result column="hvl_measured_mm_cu" property="hvlMeasuredMmCu" jdbcType="DOUBLE" />
+  </resultMap>
+</mapper>

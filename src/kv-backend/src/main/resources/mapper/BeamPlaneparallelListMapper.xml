@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.BeamPlaneparallelListMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.BeamPlaneparallelList" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="beam_planeparallel_id" property="beamPlaneparallelId" jdbcType="VARCHAR" />
+    <result column="kV" property="kv" jdbcType="DOUBLE" />
+    <result column="hvl_measured_mm_al" property="hvlMeasuredMmAl" jdbcType="DOUBLE" />
+  </resultMap>
+</mapper>

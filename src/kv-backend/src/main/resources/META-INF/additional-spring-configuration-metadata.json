@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "swagger.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Whether to enable Swagger. It should be set to false in the production environment."
+    },
+    {
+      "name": "token.expiry",
+      "type": "java.lang.String",
+      "description": "Expiration time of token in days."
+    }
+  ]
+}

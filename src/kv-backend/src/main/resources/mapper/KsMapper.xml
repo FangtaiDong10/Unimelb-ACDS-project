@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.KsMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.Ks" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="back_result_id" property="backResultId" jdbcType="VARCHAR" />
+    <result column="tp_temp" property="tpTemp" jdbcType="DOUBLE" />
+    <result column="tp_pressure" property="tpPressure" jdbcType="DOUBLE" />
+    <result column="dose_voltage" property="doseVoltage" jdbcType="DOUBLE" />
+    <result column="dose_nc_1" property="doseNc1" jdbcType="DOUBLE" />
+    <result column="dose_nc_2" property="doseNc2" jdbcType="DOUBLE" />
+    <result column="dose_nc_3" property="doseNc3" jdbcType="DOUBLE" />
+    <result column="m1" property="m1" jdbcType="DOUBLE" />
+    <result column="recombination_voltage" property="recombinationVoltage" jdbcType="DOUBLE" />
+    <result column="recombination_nc_1" property="recombinationNc1" jdbcType="DOUBLE" />
+    <result column="recombination_nc_2" property="recombinationNc2" jdbcType="DOUBLE" />
+    <result column="recombination_nc_3" property="recombinationNc3" jdbcType="DOUBLE" />
+    <result column="m2" property="m2" jdbcType="DOUBLE" />
+    <result column="ks" property="ks" jdbcType="DOUBLE" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.PhysicalAddressMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.PhysicalAddress" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="physical_address_id" property="physicalAddressId" jdbcType="VARCHAR" />
+    <result column="facility_id" property="facilityId" jdbcType="VARCHAR" />
+    <result column="input_date" property="inputDate" jdbcType="TIMESTAMP" />
+    <result column="building" property="building" jdbcType="VARCHAR" />
+    <result column="street" property="street" jdbcType="VARCHAR" />
+    <result column="suburb" property="suburb" jdbcType="VARCHAR" />
+    <result column="state_name" property="stateName" jdbcType="VARCHAR" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

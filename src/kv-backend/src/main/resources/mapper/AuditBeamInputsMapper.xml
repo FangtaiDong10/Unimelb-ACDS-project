@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.AuditBeamInputsMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.AuditBeamInputs" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="input_id" property="inputId" jdbcType="VARCHAR" />
+    <result column="audit_id" property="auditId" jdbcType="VARCHAR" />
+    <result column="cone_id" property="coneId" jdbcType="VARCHAR" />
+    <result column="beam_id" property="beamId" jdbcType="VARCHAR" />
+    <result column="dosp_ssd" property="dospSsd" jdbcType="VARCHAR" />
+    <result column="nom_dose_output" property="nomDoseOutput" jdbcType="DOUBLE" />
+    <result column="dose_output_unit" property="doseOutputUnit" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://db.kv-redback.tk:1433;database=violet_prod # url
+    username: SA # username
+    password: ProjViolet_1 # password
+server:
+  port: 5000 # port
+  ssl:
+    key-store: classpath:keystore.p12
+    key-store-password: 123
+    key-store-type: PKCS12
+swagger:
+  enabled: true
+token:
+  expiry: 1 # days

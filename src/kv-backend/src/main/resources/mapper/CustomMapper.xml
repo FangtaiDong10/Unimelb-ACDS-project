@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.CustomMapper">
+    <select id="queryAllFarmer" resultType="kv.pojo.vo.lookup.FarmerVO">
+        select bf.beam_farmer_id     as beamFarmerId,
+               bf.kV                 as kv,
+               bf.hvl_measured_mm_cu as hvlMeasuredMmCu,
+               bf.hvl_measured_mm_al as hvlMeasuredMmAl,
+               bfc.chamber_SN        as chamberSn,
+               bfc.date_updated      as dateUpdated,
+               bfc.nk_value          as nkValue,
+               cl.chamber_name       as chamberName
+        from beam_farmer_list bf
+                 inner join beam_farmer_chamber bfc on bf.beam_farmer_id = bfc.beam_farmer_id
+                 inner join chambers_list cl on bfc.chamber_SN = cl.chamber_SN
+        order by date_updated desc
+    </select>
+    <select id="queryAllPlaneparallel" resultType="kv.pojo.vo.lookup.PlaneparallelVO">
+        select bpl.beam_planeparallel_id as beamPlaneparallelId,
+               bpl.kV                    as kv,
+               bpl.hvl_measured_mm_al    as hvlMeasuredMmAl,
+               bpn.nk_value              as nkValue,
+               bpn.date_updated          as dateUpdated,
+               cl.chamber_SN             as chamberSn,
+               cl.chamber_name           as chamberName
+        from beam_planeparallel_list bpl
+                 inner join beam_planeparallel_chamber bpc on bpl.beam_planeparallel_id = bpc.beam_planeparallel_id
+                 inner join beam_planeparallel_nk bpn on bpc.beam_pp_chamber_id = bpn.beam_pp_chamber_id
+                 inner join chambers_list cl on bpc.chamber_SN = cl.chamber_SN
+        order by date_updated desc
+    </select>
+    <select id="queryAuditCases" resultType="kv.pojo.vo.audit.AuditCaseVO" parameterType="map">
+        select ai.audit_id          as auditId,
+               ai.facility_id       as clinic,
+               ah.status            as status,
+               ah.last_updated_date as date
+        from audit_information ai
+                 inner join audit_history ah on ai.audit_id = ah.audit_id
+        where ai.audit_id like '%${paramMap.auditId}%'
+          and ai.facility_id like '%${paramMap.clinic}%'
+          and ah.status like '%${paramMap.status}%'
+          and ah.last_updated_date like '%${paramMap.date}%'
+        order by ah.last_updated_date desc;
+    </select>
+    <select id="queryClosestKvp" resultType="Double" parameterType="Double">
+        select top 1 kV as kvp
+        from beam_farmer_list
+        where (kV - #{kvp}) >= 0
+        order by (kV - #{kvp})
+    </select>
+    <select id="queryLowerCheck" resultType="kv.pojo.dbo.BeamFarmerList" parameterType="kv.pojo.bo.calculation.intermediateResults.FarmerInfoBO">
+        select *
+        from beam_farmer_list
+        where #{type} &lt;= #{hvl}
+          AND kV = #{kvp}
+    </select>
+    <select id="queryUpperCheck" resultType="kv.pojo.dbo.BeamFarmerList" parameterType="kv.pojo.bo.calculation.intermediateResults.FarmerInfoBO">
+        select *
+        from beam_farmer_list
+        where #{type} &gt;= #{hvl}
+          AND kV = #{kvp}
+    </select>
+    <select id="queryLowerHVLTable" resultType="kv.pojo.dbo.BeamFarmerChamber" parameterType="map">
+        select beam_farmer_id as beamFarmerId,
+               chamber_SN     as chamberSn,
+               date_updated   as dateUpdated,
+               nk_value       as nkValue
+        from beam_farmer_chamber
+        where beam_farmer_id
+            in
+              (select top 1 beam_farmer_id
+               from beam_farmer_list
+              <if test="paramMap.type == 'al'.toString()">
+                  where hvl_measured_mm_al &lt;= #{paramMap.hvl,javaType=double,jdbcType=FLOAT}
+                  AND kV = #{paramMap.kvp,javaType=double,jdbcType=FLOAT}
+                  order by hvl_measured_mm_al
+                  desc)
+              </if>
+              <if test="paramMap.type == 'cu'.toString()">
+                  where hvl_measured_mm_cu &lt;= #{paramMap.hvl,javaType=double,jdbcType=FLOAT}
+                  AND kV = #{paramMap.kvp,javaType=double,jdbcType=FLOAT}
+                  order by hvl_measured_mm_cu
+                  desc)
+              </if>
+          and date_updated = '${paramMap.date}'
+    </select>
+    <select id="queryUpperHVLTable" resultType="kv.pojo.dbo.BeamFarmerChamber" parameterType="map">
+        select beam_farmer_id as beamFarmerId,
+        chamber_SN     as chamberSn,
+        date_updated   as dateUpdated,
+        nk_value       as nkValue
+        from beam_farmer_chamber
+        where beam_farmer_id
+        in
+        (select top 1 beam_farmer_id
+        from beam_farmer_list
+        <if test="paramMap.type == 'al'.toString()">
+            where hvl_measured_mm_al &gt;= #{paramMap.hvl,javaType=double,jdbcType=FLOAT}
+            AND kV = #{paramMap.kvp,javaType=double,jdbcType=FLOAT}
+            order by hvl_measured_mm_al
+            asc)
+        </if>
+        <if test="paramMap.type == 'cu'.toString()">
+            where hvl_measured_mm_cu &gt;= #{paramMap.hvl,javaType=double,jdbcType=FLOAT}
+            AND kV = #{paramMap.kvp,javaType=double,jdbcType=FLOAT}
+            order by hvl_measured_mm_cu
+            asc)
+        </if>
+        and date_updated = '${paramMap.date}'
+    </select>
+
+    <select id="queryLowerExtrapTable" resultType="kv.pojo.dbo.BeamFarmerChamber" parameterType="map">
+        select beam_farmer_id as beamFarmerId,
+               chamber_SN     as chamberSn,
+               nk_value       as nkValue
+        from beam_farmer_chamber
+        where beam_farmer_id
+            in
+              (select TOP 2 beam_farmer_id
+               from beam_farmer_list
+        <if test="paramMap.type == 'al'.toString()">
+            where hvl_measured_mm_al &gt;= #{paramMap.hvl}
+        </if>
+        <if test="paramMap.type == 'cu'.toString()">
+            where hvl_measured_mm_cu &gt;= #{paramMap.hvl}
+        </if>
+        AND kV = #{paramMap.kvp}
+            <if test="paramMap.type == 'al'.toString()">
+               order by hvl_measured_mm_al
+            </if>
+            <if test="paramMap.type == 'cu'.toString()">
+                order by hvl_measured_mm_cu
+             </if>
+            )
+          and date_updated = '${paramMap.date}'
+    </select>
+    <select id="queryUpperExtrapTable" resultType="kv.pojo.dbo.BeamFarmerChamber" parameterType="map">
+        select beam_farmer_id as beamFarmerId,
+               chamber_SN     as chamberSn,
+               nk_value       as nkValue
+        from beam_farmer_chamber
+        where beam_farmer_id
+            in
+              (select TOP 2 beam_farmer_id
+               from beam_farmer_list
+        <if test="paramMap.type == 'al'.toString()">
+            where hvl_measured_mm_al &gt;= #{paramMap.hvl}
+        </if>
+        <if test="paramMap.type == 'cu'.toString()">
+            where hvl_measured_mm_cu &gt;= #{paramMap.hvl}
+        </if>
+                 AND kV = #{paramMap.kvp}
+        <if test="paramMap.type == 'al'.toString()">
+            order by hvl_measured_mm_al
+        </if>
+        <if test="paramMap.type == 'cu'.toString()">
+            order by hvl_measured_mm_cu
+        </if>
+                       DESC)
+          and date_updated = '${paramMap.date}'
+    </select>
+    <select id="queryBeamPlaneparallelChamberLowerTable" resultType="kv.pojo.bo.calculation.QueryPlaneparallelResultBO"
+            parameterType="Double">
+        select top 2 beam_pp_chamber_id as beamPpChamberId,
+                     a.beam_planeparallel_id as beamPlaneparallelId,
+                     chamber_SN as chamberSn,
+                     hvl_measured_mm_al as hvlMeasuredMmAl
+        from beam_planeparallel_chamber as a
+                 left join
+             beam_planeparallel_list as b
+             on
+                 a.beam_planeparallel_id = b.beam_planeparallel_id
+        where hvl_measured_mm_al &lt;= #{hvl}
+        order by hvl_measured_mm_al
+                desc
+    </select>
+    <select id="queryBeamPlaneparallelChamberUpperTable" resultType="kv.pojo.bo.calculation.QueryPlaneparallelResultBO"
+            parameterType="Double">
+        select top 2 beam_pp_chamber_id as beamPpChamberId,
+                     a.beam_planeparallel_id as beamPlaneparallelId,
+                     chamber_SN as chamberSn,
+                     hvl_measured_mm_al as hvlMeasuredMmAl
+        from beam_planeparallel_chamber as a
+                 left join
+             beam_planeparallel_list as b
+             on
+                 a.beam_planeparallel_id = b.beam_planeparallel_id
+        where hvl_measured_mm_al &gt;= #{hvl}
+        order by hvl_measured_mm_al
+    </select>
+    <select id="queryMurhoAlByLatestDate" resultType="kv.pojo.dbo.MurhoAl">
+        select murho_al_id as murhoAlId,
+               hvl_al as hvlAl,
+               murho,
+               date_updated as dateUpdated
+        from murho_al
+        where date_updated in (
+            select max(date_updated)
+            from murho_al
+            )
+        order by hvl_al
+    </select>
+    <select id="queryMurhoCuByLatestDate" resultType="kv.pojo.dbo.MurhoCu">
+        select murho_cu_id as murhoCuId,
+               hvl_cu as hvlCu,
+               murho,
+               date_updated as dateUpdated
+        from murho_cu
+        where date_updated in (
+            select max(date_updated)
+            from murho_cu
+        )
+        order by hvl_cu
+    </select>
+</mapper>

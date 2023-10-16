@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.KvReferenceDosimetryMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.KvReferenceDosimetry" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="audit_id" property="auditId" jdbcType="VARCHAR" />
+    <result column="protocol" property="protocol" jdbcType="VARCHAR" />
+    <result column="reference_chamber" property="referenceChamber" jdbcType="VARCHAR" />
+    <result column="air_phantom" property="airPhantom" jdbcType="VARCHAR" />
+    <result column="reference_depth" property="referenceDepth" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

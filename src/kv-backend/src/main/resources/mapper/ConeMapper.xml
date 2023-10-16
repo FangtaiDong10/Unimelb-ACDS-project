@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.ConeMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.Cone" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="cone_id" property="coneId" jdbcType="VARCHAR" />
+    <result column="cone_id_alt" property="coneIdAlt" jdbcType="VARCHAR" />
+    <result column="shape" property="shape" jdbcType="VARCHAR" />
+    <result column="open_closed" property="openClosed" jdbcType="VARCHAR" />
+    <result column="ssd" property="ssd" jdbcType="DOUBLE" />
+    <result column="field_area" property="fieldArea" jdbcType="DOUBLE" />
+    <result column="field_dimension_1" property="fieldDimension1" jdbcType="DOUBLE" />
+    <result column="field_dimension_2" property="fieldDimension2" jdbcType="DOUBLE" />
+    <result column="field_diameter" property="fieldDiameter" jdbcType="DOUBLE" />
+    <result column="end_thickness" property="endThickness" jdbcType="DOUBLE" />
+  </resultMap>
+</mapper>

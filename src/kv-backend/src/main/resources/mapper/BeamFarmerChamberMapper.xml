@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.BeamFarmerChamberMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.BeamFarmerChamber" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="beam_farmer_id" property="beamFarmerId" jdbcType="VARCHAR" />
+    <result column="chamber_SN" property="chamberSn" jdbcType="VARCHAR" />
+    <result column="date_updated" property="dateUpdated" jdbcType="DATE" />
+    <result column="nk_value" property="nkValue" jdbcType="DOUBLE" />
+  </resultMap>
+</mapper>

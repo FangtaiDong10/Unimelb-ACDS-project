@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.AdditionalCommentsMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.AdditionalComments" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
+    <result column="audit_id" property="auditId" jdbcType="VARCHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
+  </resultMap>
+</mapper>

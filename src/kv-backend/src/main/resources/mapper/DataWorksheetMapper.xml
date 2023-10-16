@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kv.mapper.DataWorksheetMapper" >
+  <resultMap id="BaseResultMap" type="kv.pojo.dbo.DataWorksheet" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="back_result_id" property="backResultId" jdbcType="VARCHAR" />
+    <result column="kelec" property="kelec" jdbcType="DOUBLE" />
+    <result column="webline_bias_v" property="weblineBiasV" jdbcType="VARCHAR" />
+    <result column="daily_output" property="dailyOutput" jdbcType="DOUBLE" />
+    <result column="dose_rate_nom" property="doseRateNom" jdbcType="DOUBLE" />
+    <result column="k_combined" property="kCombined" jdbcType="DOUBLE" />
+    <result column="kpol" property="kpol" jdbcType="DOUBLE" />
+    <result column="temp" property="temp" jdbcType="DOUBLE" />
+    <result column="pressure" property="pressure" jdbcType="DOUBLE" />
+    <result column="kTP" property="ktp" jdbcType="DOUBLE" />
+    <result column="Mnc_1" property="mnc1" jdbcType="DOUBLE" />
+    <result column="Mnc_2" property="mnc2" jdbcType="DOUBLE" />
+    <result column="Mnc_3" property="mnc3" jdbcType="DOUBLE" />
+    <result column="avg_Mnc" property="avgMnc" jdbcType="DOUBLE" />
+    <result column="acds_output" property="acdsOutput" jdbcType="DOUBLE" />
+    <result column="facility_output" property="facilityOutput" jdbcType="DOUBLE" />
+    <result column="percentage_diff" property="percentageDiff" jdbcType="DOUBLE" />
+  </resultMap>
+</mapper>
